@@ -5,9 +5,10 @@ pipeline {
     agent any
     stages {
         stage('SonarQube Analysis') {
-            def mvn = tool 'Maven';
-            withSonarQubeEnv() {
-                sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=calculator -Dsonar.projectName='Calculator'"
+            steps {
+                withSonarQubeEnv() {
+                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=calculator -Dsonar.projectName='Calculator'"
+                }
             }
         }
         stage('Test') {
