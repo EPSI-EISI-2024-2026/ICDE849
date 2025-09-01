@@ -1,0 +1,32 @@
+services:
+  jenkins:
+    image: jenkins/jenkins:2.525-jdk21
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_datas:/var/jenkins_home
+
+  sonarqube:
+    image: sonarqube:25.8.0.112029-community
+    ports:
+      - "9000:9000"
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+
+  nexus:
+    image: sonatype/nexus3:3.82.1-alpine
+    ports:
+      - "8081:8081"
+    volumes:
+      - nexus_data:/nexus-data
+
+volumes:
+  jenkins_datas:
+    external: true
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+  nexus_data:
