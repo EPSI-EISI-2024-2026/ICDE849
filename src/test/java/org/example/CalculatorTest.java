@@ -18,14 +18,14 @@ class CalculatorTest {
         assertEquals(5, Calculator.add(2,3));
     }
 
- /*    @ParameterizedTest
+    @ParameterizedTest
     @ValueSource(ints = {0,1,5,10})
     @Tag("fast")
     void testAddParam(int x) {
         assertEquals(x + x, Calculator.add(x,x));
     }
- */
-/*     @ParameterizedTest
+
+    @ParameterizedTest
     @CsvSource({
             "1,2,0",
             "9,3,3",
@@ -34,28 +34,22 @@ class CalculatorTest {
     @Tag("fast")
     void testDivIntCsv(int a, int b, int expected) {
         assertEquals(expected, Calculator.divInt(a,b));
-    } */
+    }
 
     @Test
     void testDivisionParZero() {
         assertThrows(IllegalArgumentException.class, () -> Calculator.divInt(10,0));
     }
 
-  /*   @Test
+    @Test
     void testAvecTimeout() {
         assertTimeout(Duration.ofMillis(100), () -> {
             // quick operation under 100ms
             for (int i=0;i<10000;i++) Math.sqrt(i);
         });
-    } */
-
-    @Disabled("À implémenter plus tard")
-    @Test
-    void testNonImplemente() {
-        // TODO
     }
 
-/*     @Nested
+    @Nested
     @DisplayName("Division réelle")
     class RealDivision {
         @Test
@@ -65,5 +59,5 @@ class CalculatorTest {
                     () -> assertEquals(2.0, Calculator.divReal(10,5), 1e-9)
             );
         }
-    } */
+    }
 }
