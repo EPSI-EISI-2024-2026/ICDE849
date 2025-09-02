@@ -19,7 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {                
                 configFileProvider([configFile(fileId: 'maven-nexus-creds', variable: 'MAVEN_SETTINGS')]) {
-                    sh 'mvn deploy -DskipTests'
+                    sh 'mvn -B -s "$MAVEN_SETTINGS" -DskipTests deploy'
                 }
             }
         }
