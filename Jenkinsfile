@@ -7,7 +7,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('Local') {
-                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=calculator -Dsonar.projectName='Calculator'"
+                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=calculator -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
                 }
             }
         }
